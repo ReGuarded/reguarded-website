@@ -771,7 +771,7 @@
 
     // Save to Supabase waitlist via API
     try {
-      await fetch("/api/chat", {
+      await fetch("https://reguarded-sam.vercel.app/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ type: "join-waitlist", email, source })
