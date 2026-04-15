@@ -68,6 +68,31 @@
 
   .nav-wordmark span { color: var(--blue-halo); }
 
+  /* ── NAV LINKS ── */
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 32px;
+  }
+
+  .nav-link {
+    font-family: "DM Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: color 0.2s, background 0.2s;
+    white-space: nowrap;
+  }
+
+  .nav-link:hover {
+    color: var(--navy);
+    background: rgba(27,58,107,0.06);
+  }
+
   .nav-cta {
     margin-left: auto;
     background: var(--navy);
@@ -490,6 +515,7 @@
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     nav { padding: 16px 20px; }
+    .nav-links { display: none; }
     .hero { padding: 100px 20px 60px; }
     .hero-form { flex-direction: column; }
     .trust-bar { gap: 24px; padding: 20px 24px; }
@@ -510,6 +536,12 @@
 <nav>
   <img src="https://reguarded-sam.vercel.app/sam-u-logo.png" alt="Sam U"/>
   <div class="nav-wordmark">Sam <span>U</span></div>
+  <nav class="nav-links">
+    <a href="#scenarios" class="nav-link">How It Works</a>
+    <a href="#for-families" class="nav-link">For Families</a>
+    <a href="#features" class="nav-link">Features</a>
+    <a href="#early-access" class="nav-link">Early Access</a>
+  </nav>
   <a href="#waitlist" class="nav-cta">Join the waitlist</a>
 </nav>
 
@@ -540,7 +572,7 @@
 </div>
 
 <!-- Scenarios -->
-<section>
+<section id="scenarios">
   <div class="section-inner">
     <span class="section-eyebrow">Real situations. Real help.</span>
     <h2 class="section-title">The moments parents dread.<br/>Sam handles them.</h2>
@@ -593,7 +625,7 @@
 </section>
 
 <!-- Two Sides Section -->
-<section style="background:var(--navy);padding:100px 24px;">
+<section id="for-families" style="background:var(--navy);padding:100px 24px;">
   <div class="section-inner">
     <span class="section-eyebrow" style="color:var(--blue-halo);">Built for the whole family</span>
     <h2 class="section-title" style="color:white;margin-bottom:16px;">Two sides of the same guardian.</h2>
@@ -654,7 +686,7 @@
 </section>
 
 <!-- Features -->
-<section style="background:white;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+<section id="features" style="background:white;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
   <div class="section-inner">
     <span class="section-eyebrow">What Sam covers</span>
     <h2 class="section-title">Everything your student needs.<br/>Always within reach.</h2>
@@ -707,7 +739,7 @@
 </section>
 
 <!-- How It Works -->
-<div class="how-section">
+<div class="how-section" id="how-it-works">
   <div class="section-inner">
     <span class="section-eyebrow">Getting started</span>
     <h2 class="section-title">Up and running in minutes.</h2>
@@ -734,7 +766,7 @@
 </div>
 
 <!-- Bottom CTA -->
-<div class="bottom-cta">
+<div class="bottom-cta" id="early-access">
   <div class="section-inner">
     <span class="section-eyebrow">Early access</span>
     <h2 class="section-title">Be among the first families<br/>to have Sam in their corner.</h2>
