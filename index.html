@@ -73,7 +73,9 @@
     display: flex;
     align-items: center;
     gap: 4px;
-    margin-left: 32px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .nav-link {
@@ -536,12 +538,12 @@
 <nav>
   <img src="https://reguarded-sam.vercel.app/sam-u-logo.png" alt="Sam U"/>
   <div class="nav-wordmark">Sam <span>U</span></div>
-  <nav class="nav-links">
+  <div class="nav-links">
     <a href="#scenarios" class="nav-link">How It Works</a>
     <a href="#for-families" class="nav-link">For Families</a>
     <a href="#features" class="nav-link">Features</a>
     <a href="#early-access" class="nav-link">Early Access</a>
-  </nav>
+  </div>
   <a href="#waitlist" class="nav-cta">Join the waitlist</a>
 </nav>
 
