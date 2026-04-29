@@ -559,7 +559,7 @@
   <img src="https://reguarded-sam.vercel.app/sam-u-logo.png" alt="Sam U" class="hero-logo"/>
   <h1>Your student is 1,000 miles away.<br/><em>Sam is always there.</em></h1>
   <p class="hero-sub">Sam U is an AI-powered "campus guardian" for college students and their parents — available 24/7 for the moments that can't wait until morning.</p>
-  <p style="font-size:15px;font-weight:400;color:var(--text-muted);letter-spacing:0.3px;margin-bottom:40px;font-style:italic;animation:fadeUp 0.8s 0.22s ease both;line-height:1.7;max-width:520px;text-align:center;">From move-in day to graduation — Sam gives you clear, calm, actionable guidance.<br/><strong style="font-style:normal;color:var(--navy);font-weight:500;">No judgment. No panic. Just real help.</strong></p>
+  <p style="font-size:15px;font-weight:400;color:var(--text-muted);letter-spacing:0.3px;margin-bottom:40px;font-style:italic;animation:fadeUp 0.8s 0.22s ease both;line-height:1.7;max-width:520px;text-align:center;">From move-in day to graduation — Sam gives you clear, calm, actionable guidance.<br/><strong style="font-style:normal;color:var(--navy);font-weight:500;">Always private. No judgment. No panic. Just real help.</strong></p>
   <div class="hero-form" id="waitlist">
     <input type="email" class="hero-input" id="hero-email" placeholder="your@email.com" onkeydown="if(event.key==='Enter') joinWaitlist('hero')"/>
     <button class="hero-btn" onclick="joinWaitlist('hero')">Join the waitlist</button>
@@ -626,14 +626,6 @@
         </div>
       </div>
 
-      <div class="scenario-card">
-        <div class="scenario-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div>
-        <div>
-          <div class="scenario-problem">Your student is Spring Breaking in Florida with friends and something goes wrong at 2am.</div>
-          <div class="scenario-solution"><strong>Sam is already anchored to their location</strong> — legal help, urgent care, and emergency contacts, all local to where they are.</div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -657,6 +649,9 @@
             <span style="color:#C01230;font-size:16px;">✓</span> Legal & arrest guidance
           </div>
           <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(255,255,255,0.75);">
+            <span style="color:#C01230;font-size:16px;">✓</span> ER & health navigation
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(255,255,255,0.75);">
             <span style="color:#C01230;font-size:16px;">✓</span> Spring Break location mode
           </div>
           <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(255,255,255,0.75);">
@@ -671,12 +666,16 @@
       <!-- Student side -->
       <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:40px 36px;">
         <div style="width:52px;height:52px;border-radius:14px;background:rgba(91,155,213,0.2);border:1px solid rgba(91,155,213,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:24px;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="rgba(180,220,255,0.9)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
-        <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:white;margin-bottom:12px;">For Students</div>
-        <p style="font-size:15px;color:rgba(255,255,255,0.65);line-height:1.75;font-weight:300;margin-bottom:24px;">Your student has their own private version of Sam. What they ask stays completely between them and Sam — never shared with parents. Ever. Because students who trust Sam will actually use Sam when it matters most.</p>
+        <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:white;margin-bottom:20px;">For Students</div>
+
+        <!-- Privacy statement — visually dominant -->
+        <div style="background:rgba(91,155,213,0.15);border:1px solid rgba(91,155,213,0.35);border-radius:14px;padding:20px 22px;margin-bottom:24px;">
+          <div style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue-halo);margin-bottom:10px;">🔒 Student Privacy Guarantee</div>
+          <p style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:white;line-height:1.5;margin-bottom:8px;">What they tell Sam stays with Sam.<br/>Never shared with parents. Ever.</p>
+          <p style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.65;font-weight:300;">Students who trust Sam will actually use Sam when it matters most. That's the whole point.</p>
+        </div>
+
         <div style="display:flex;flex-direction:column;gap:10px;">
-          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(255,255,255,0.75);">
-            <span style="color:#5B9BD5;font-size:16px;">✓</span> Fully private conversations
-          </div>
           <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(255,255,255,0.75);">
             <span style="color:#5B9BD5;font-size:16px;">✓</span> Real-time guidance, no judgment
           </div>
@@ -685,6 +684,9 @@
           </div>
           <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(255,255,255,0.75);">
             <span style="color:#5B9BD5;font-size:16px;">✓</span> Auto, health, scam protection
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(255,255,255,0.75);">
+            <span style="color:#5B9BD5;font-size:16px;">✓</span> No such thing as a dumb question
           </div>
         </div>
       </div>
