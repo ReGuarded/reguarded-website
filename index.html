@@ -68,7 +68,6 @@
 
   .nav-wordmark span { color: var(--blue-halo); }
 
-  /* ── NAV LINKS ── */
   .nav-links {
     display: flex;
     align-items: center;
@@ -374,6 +373,9 @@
     font-weight: 500;
   }
 
+  /* ── INDEPENDENCE SECTION ── */
+  .independence-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+
   /* ── FEATURES GRID ── */
   .features-grid {
     display: grid;
@@ -529,6 +531,7 @@
     .bottom-form { flex-direction: column; }
     footer { flex-direction: column; text-align: center; padding: 32px 24px; }
     .two-sides-grid { grid-template-columns: 1fr !important; }
+    .independence-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
   }
 </style>
 </head>
@@ -581,6 +584,15 @@
     <p class="section-sub">Sam U was built for the scenarios that happen at the worst possible times — when you're far away and your student doesn't know what to do.</p>
 
     <div class="scenarios">
+
+      <!-- NEW: ER / Medical scenario -->
+      <div class="scenario-card">
+        <div class="scenario-icon" style="background:#fde8eb;border-color:#f09595;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a32d2d" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <div>
+          <div class="scenario-problem">Your student wakes up at 2am with chest pain — alone, unsure if it's serious, and 900 miles from you.</div>
+          <div class="scenario-solution"><strong>Sam triages the symptoms, finds the right urgent care, and navigates the insurance question</strong> — so they're not alone in a waiting room, and you're not spiraling at home with no information.</div>
+        </div>
+      </div>
 
       <div class="scenario-card">
         <div class="scenario-icon" style="background:#fde8eb;border-color:#f09595;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a32d2d" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
@@ -687,6 +699,31 @@
   </div>
 </section>
 
+<!-- NEW: Independence Section -->
+<section style="background:white;border-top:1px solid var(--border);padding:80px 24px;">
+  <div class="section-inner independence-grid">
+    <div>
+      <span class="section-eyebrow">The long game</span>
+      <h2 class="section-title">Not a safety net.<br/>A stepping stone.</h2>
+      <p style="font-size:16px;font-weight:300;color:var(--text-secondary);line-height:1.8;">You didn't raise them to need you forever. Sam helps your student figure things out — so next time, they don't have to ask.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div style="background:var(--cream);border:1px solid var(--border);border-radius:14px;padding:24px 28px;">
+        <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px;">Landlord won't return the deposit.</div>
+        <div style="font-size:13px;color:var(--text-muted);line-height:1.6;">Sam explains their rights and gives them the exact words. Next time, they've got it.</div>
+      </div>
+      <div style="background:var(--cream);border:1px solid var(--border);border-radius:14px;padding:24px 28px;">
+        <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px;">Weird charge on the insurance bill.</div>
+        <div style="font-size:13px;color:var(--text-muted);line-height:1.6;">Sam breaks it down — whether to dispute it, who to call. They learn how this works without the panic.</div>
+      </div>
+      <div style="background:var(--cream);border:1px solid var(--border);border-radius:14px;padding:24px 28px;">
+        <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px;">Symptom they're not sure about at midnight.</div>
+        <div style="font-size:13px;color:var(--text-muted);line-height:1.6;">Sam helps them decide: urgent care, wait it out, or 911. Your phone doesn't ring until there's something real to say.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Features -->
 <section id="features" style="background:white;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
   <div class="section-inner">
@@ -705,11 +742,14 @@
         <div class="feature-title">Legal & Arrest Help</div>
         <div class="feature-desc">Step-by-step guidance — DWI stops, arrests, MIP, rights — plus instant connection to a local defense attorney.</div>
       </div>
+
+      <!-- UPDATED: ER & Health Navigation tile -->
       <div class="feature-card">
         <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-        <div class="feature-title">Health & Insurance</div>
-        <div class="feature-desc">Navigate ER bills, student health insurance, urgent care, and prescription costs without the confusion.</div>
+        <div class="feature-title">ER & Health Navigation</div>
+        <div class="feature-desc">Symptom triage, urgent care finder, insurance navigation, and prescription help — being sick at college is hard enough.</div>
       </div>
+
       <div class="feature-card">
         <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
         <div class="feature-title">Auto & Car Trouble</div>
