@@ -14,7 +14,52 @@
 <meta name="apple-mobile-web-app-title" content="Sam U"/>
 <meta name="theme-color" content="#1B3A6B"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/insights/script.js">
+  let selectedDemoType = '';
+
+  function selectDemoType(el) {
+    document.querySelectorAll('.demo-chip').forEach(c => {
+      c.style.background = 'var(--cream)';
+      c.style.borderColor = 'var(--border)';
+      c.style.color = 'var(--text-secondary)';
+      c.style.fontWeight = '400';
+    });
+    el.style.background = '#e8f4fc';
+    el.style.borderColor = 'var(--navy)';
+    el.style.color = 'var(--navy)';
+    el.style.fontWeight = '500';
+    selectedDemoType = el.dataset.value;
+    document.getElementById('demo-type-error').textContent = '';
+  }
+
+  async function submitDemoRequest() {
+    const firstName = document.getElementById('demo-first').value.trim();
+    const lastName = document.getElementById('demo-last').value.trim();
+    const email = document.getElementById('demo-email').value.trim().toLowerCase();
+    const phone = document.getElementById('demo-phone').value.trim();
+
+    let hasError = false;
+    if (!firstName) { document.getElementById('demo-first').style.borderColor = '#C01230'; hasError = true; } else { document.getElementById('demo-first').style.borderColor = ''; }
+    if (!lastName) { document.getElementById('demo-last').style.borderColor = '#C01230'; hasError = true; } else { document.getElementById('demo-last').style.borderColor = ''; }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { document.getElementById('demo-email').style.borderColor = '#C01230'; hasError = true; } else { document.getElementById('demo-email').style.borderColor = ''; }
+    if (!selectedDemoType) { document.getElementById('demo-type-error').textContent = 'Please select one.'; hasError = true; }
+    if (hasError) return;
+
+    const btn = document.querySelector('#demo-form button');
+    btn.disabled = true; btn.textContent = 'Sending...';
+
+    try {
+      await fetch("https://app.campusguardians.com/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type: "demo-request", firstName, lastName, email, phone, userType: selectedDemoType, source: "website" })
+      });
+    } catch(e) {}
+
+    document.getElementById('demo-form').style.display = 'none';
+    document.getElementById('demo-success').style.display = 'block';
+  }
+</script>
 <style>
   :root {
     --navy: #1B3A6B;
@@ -571,12 +616,10 @@
   <h1>Your student is 1,000 miles away.<br/><em>Sam is always there.</em></h1>
   <p class="hero-sub">Sam U is an AI-powered "campus guardian" for college students and their parents — available 24/7 for the moments that can't wait until morning.</p>
   <p style="font-size:15px;font-weight:400;color:var(--text-muted);letter-spacing:0.3px;margin-bottom:40px;font-style:italic;animation:fadeUp 0.8s 0.22s ease both;line-height:1.7;max-width:520px;text-align:center;">From move-in day to graduation — Sam gives you clear, calm, actionable guidance.<br/><strong style="font-style:normal;color:var(--navy);font-weight:500;">Always private. No judgment. No panic. Just real help.</strong></p>
-  <div class="hero-form" id="waitlist">
-    <input type="email" class="hero-input" id="hero-email" placeholder="your@email.com" onkeydown="if(event.key==='Enter') joinWaitlist('hero')"/>
-    <button class="hero-btn" onclick="joinWaitlist('hero')">Get Started</button>
+  <div style="animation:fadeUp 0.8s 0.25s ease both;">
+    <a href="#early-access" class="hero-btn" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;">Get Started →</a>
   </div>
   <p class="hero-privacy">🔒 No spam. No marketing. We'll reach out personally when your spot is ready.</p>
-  <div class="hero-success" id="hero-success">✓ You're on the list — we'll be in touch soon.</div>
 </section>
 
 <!-- Trust Bar -->
@@ -803,12 +846,26 @@
     <span class="section-eyebrow">Early access</span>
     <h2 class="section-title">Be among the first families<br/>to have Sam in their corner.</h2>
     <p class="section-sub" style="margin:0 auto 48px;">Sam U is currently invite-only. Get started and we'll reach out personally when your spot is ready.</p>
-    <div class="bottom-form">
-      <input type="email" class="hero-input" id="bottom-email" placeholder="your@email.com" onkeydown="if(event.key==='Enter') joinWaitlist('bottom')"/>
-      <button class="hero-btn" onclick="joinWaitlist('bottom')">Get Started</button>
+    <div id="demo-form" style="max-width:480px;margin:0 auto;display:flex;flex-direction:column;gap:14px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <input type="text" id="demo-first" class="hero-input" placeholder="First name" style="width:100%;"/>
+        <input type="text" id="demo-last" class="hero-input" placeholder="Last name" style="width:100%;"/>
+      </div>
+      <input type="email" id="demo-email" class="hero-input" placeholder="your@email.com"/>
+      <input type="tel" id="demo-phone" class="hero-input" placeholder="Phone (optional)"/>
+      <div>
+        <div style="font-size:13px;font-weight:500;color:var(--text-secondary);margin-bottom:10px;">Which best describes you? <span style="color:var(--red);">*</span></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;" id="demo-type-group">
+          <div class="demo-chip" data-value="Parent" onclick="selectDemoType(this)" style="padding:8px 18px;border-radius:999px;border:1.5px solid var(--border);font-size:13px;color:var(--text-secondary);background:var(--cream);cursor:pointer;transition:all 0.18s;user-select:none;">👨‍👩‍👧 Parent</div>
+          <div class="demo-chip" data-value="Student" onclick="selectDemoType(this)" style="padding:8px 18px;border-radius:999px;border:1.5px solid var(--border);font-size:13px;color:var(--text-secondary);background:var(--cream);cursor:pointer;transition:all 0.18s;user-select:none;">🎓 Student</div>
+          <div class="demo-chip" data-value="Both" onclick="selectDemoType(this)" style="padding:8px 18px;border-radius:999px;border:1.5px solid var(--border);font-size:13px;color:var(--text-secondary);background:var(--cream);cursor:pointer;transition:all 0.18s;user-select:none;">👨‍👩‍👧‍👦 Both</div>
+        </div>
+        <div id="demo-type-error" style="font-size:12px;color:var(--red);margin-top:6px;min-height:16px;"></div>
+      </div>
+      <button class="hero-btn" onclick="submitDemoRequest()" style="width:100%;padding:16px;">Get Started</button>
+      <p class="hero-privacy" style="margin-top:4px;">🔒 No spam. No marketing. A personal note from the Campus Guardians team.</p>
     </div>
-    <p class="hero-privacy" style="margin-top:14px;">🔒 No spam. No marketing. A personal note from the Campus Guardians team.</p>
-    <div class="hero-success" id="bottom-success">✓ You're on the list — we'll be in touch soon.</div>
+    <div class="hero-success" id="demo-success" style="display:none;margin-top:16px;">✓ You're in — we'll be in touch personally very soon.</div>
   </div>
 </div>
 
@@ -965,5 +1022,6 @@
 
 </body>
 </html>
+
 
 
