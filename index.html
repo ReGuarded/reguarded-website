@@ -14,52 +14,7 @@
 <meta name="apple-mobile-web-app-title" content="Sam U"/>
 <meta name="theme-color" content="#1B3A6B"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-<script defer src="/_vercel/insights/script.js">
-  let selectedDemoType = '';
-
-  function selectDemoType(el) {
-    document.querySelectorAll('.demo-chip').forEach(c => {
-      c.style.background = 'var(--cream)';
-      c.style.borderColor = 'var(--border)';
-      c.style.color = 'var(--text-secondary)';
-      c.style.fontWeight = '400';
-    });
-    el.style.background = '#e8f4fc';
-    el.style.borderColor = 'var(--navy)';
-    el.style.color = 'var(--navy)';
-    el.style.fontWeight = '500';
-    selectedDemoType = el.dataset.value;
-    document.getElementById('demo-type-error').textContent = '';
-  }
-
-  async function submitDemoRequest() {
-    const firstName = document.getElementById('demo-first').value.trim();
-    const lastName = document.getElementById('demo-last').value.trim();
-    const email = document.getElementById('demo-email').value.trim().toLowerCase();
-    const phone = document.getElementById('demo-phone').value.trim();
-
-    let hasError = false;
-    if (!firstName) { document.getElementById('demo-first').style.borderColor = '#C01230'; hasError = true; } else { document.getElementById('demo-first').style.borderColor = ''; }
-    if (!lastName) { document.getElementById('demo-last').style.borderColor = '#C01230'; hasError = true; } else { document.getElementById('demo-last').style.borderColor = ''; }
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { document.getElementById('demo-email').style.borderColor = '#C01230'; hasError = true; } else { document.getElementById('demo-email').style.borderColor = ''; }
-    if (!selectedDemoType) { document.getElementById('demo-type-error').textContent = 'Please select one.'; hasError = true; }
-    if (hasError) return;
-
-    const btn = document.querySelector('#demo-form button');
-    btn.disabled = true; btn.textContent = 'Sending...';
-
-    try {
-      await fetch("https://app.campusguardians.com/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ type: "demo-request", firstName, lastName, email, phone, userType: selectedDemoType, source: "website" })
-      });
-    } catch(e) {}
-
-    document.getElementById('demo-form').style.display = 'none';
-    document.getElementById('demo-success').style.display = 'block';
-  }
-</script>
+<script defer src="/_vercel/insights/script.js"></script>
 <style>
   :root {
     --navy: #1B3A6B;
@@ -1018,7 +973,52 @@
     document.getElementById(otherInput).style.display = "none";
     document.getElementById(otherSuccess).style.display = "block";
   }
-</script>
+
+  let selectedDemoType = '';
+
+  function selectDemoType(el) {
+    document.querySelectorAll('.demo-chip').forEach(c => {
+      c.style.background = 'var(--cream)';
+      c.style.borderColor = 'var(--border)';
+      c.style.color = 'var(--text-secondary)';
+      c.style.fontWeight = '400';
+    });
+    el.style.background = '#e8f4fc';
+    el.style.borderColor = 'var(--navy)';
+    el.style.color = 'var(--navy)';
+    el.style.fontWeight = '500';
+    selectedDemoType = el.dataset.value;
+    document.getElementById('demo-type-error').textContent = '';
+  }
+
+  async function submitDemoRequest() {
+    const firstName = document.getElementById('demo-first').value.trim();
+    const lastName = document.getElementById('demo-last').value.trim();
+    const email = document.getElementById('demo-email').value.trim().toLowerCase();
+    const phone = document.getElementById('demo-phone').value.trim();
+
+    let hasError = false;
+    if (!firstName) { document.getElementById('demo-first').style.borderColor = '#C01230'; hasError = true; } else { document.getElementById('demo-first').style.borderColor = ''; }
+    if (!lastName) { document.getElementById('demo-last').style.borderColor = '#C01230'; hasError = true; } else { document.getElementById('demo-last').style.borderColor = ''; }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { document.getElementById('demo-email').style.borderColor = '#C01230'; hasError = true; } else { document.getElementById('demo-email').style.borderColor = ''; }
+    if (!selectedDemoType) { document.getElementById('demo-type-error').textContent = 'Please select one.'; hasError = true; }
+    if (hasError) return;
+
+    const btn = document.querySelector('#demo-form button');
+    btn.disabled = true; btn.textContent = 'Sending...';
+
+    try {
+      await fetch("https://app.campusguardians.com/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type: "demo-request", firstName, lastName, email, phone, userType: selectedDemoType, source: "website" })
+      });
+    } catch(e) {}
+
+    document.getElementById('demo-form').style.display = 'none';
+    document.getElementById('demo-success').style.display = 'block';
+  }
+</script></script>
 
 </body>
 </html>
